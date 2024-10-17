@@ -8,7 +8,7 @@ Sample input            Expected output
 4,4,0.009,02893,08516   .23
 5,7,0.013,07245,45216   .43
 5,7,0.2,45216,07245     .45
-10,12,0.4,15623,89175   .8
+10,12,0.4,15623,89175   .80
 10,12,30,21505,72400    4.65
 """
 def main():
@@ -155,21 +155,34 @@ def getcost(mailtype, zip_code_from, zip_code_to):
     """
     if mailtype == "postcard":
         total = (.20 + .03* abs(zip_code_to - zip_code_from))
+        total = format(total, '.2f')
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "large postcard": 
         total = (.37 + .03* abs(zip_code_to - zip_code_from))
+        total = format(total, '.2f')
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "envelope": 
         total = (.37 + .04* abs(zip_code_to - zip_code_from))
+        total = format(total, '.2f')
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "large envelope": 
         total = (.60 + .05* abs(zip_code_to - zip_code_from))
+        total = format(total, '.2f')
+        #print(type(total))
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "package":
         total = (2.95 + .25* abs(zip_code_to - zip_code_from))
+        total = format(total, '.2f')
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "large package": 
         total = (3.95 + .35* abs(zip_code_to - zip_code_from)) 
+        total = format(total, '.2f')
+        total = str(total).lstrip('0')
         print(total)
     elif mailtype == "unmailable": 
         print("Unmailable")
