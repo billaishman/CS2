@@ -3,7 +3,7 @@
 #Features:
 #Log: 1.0
 
-#These import lirbaries Pandas for working with datasets and plotly for displaying plots
+#These import libraries Pandas for working with datasets and plotly for displaying plots
 import pandas as pd
 import plotly.express as px
 
