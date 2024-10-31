@@ -1,0 +1,1 @@
+This code is used to read in data from file. It then removes certain words like "a" or "and." Then it makes a dictionary of all of the words and counts how many times each word is used. Then it make a graph using Plotly to show which words were used the most.
