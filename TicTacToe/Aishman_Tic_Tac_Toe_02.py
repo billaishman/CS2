@@ -3,6 +3,20 @@
 #Bugs: 
 #Features:
 #Log: 1.0
+'''
+The tic-tac-toe algorithm
+1. Welcome! Play TTT?
+2. 1 or 2 players (machine can also play itself).
+3. Determine X or O
+4. Draw the Board/Label coords
+5. Loop 9 or break
+6. Ask the player where they want go
+7. If exists prior turn -- then 'spot taken' /else place choice
+8. Check win?
+8a. Display the Board
+9. Player 2 (user or machine)
+10 .....if machine --random --- if spot it chose -- choose another random
+'''
 
 #Imports the random library for the computer player
 import random
