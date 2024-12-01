@@ -6,7 +6,7 @@
 '''
 The tic-tac-toe algorithm
 1. Welcome! Play TTT?
-2. 1 or 2 players (machine can also play itself).
+2. 1 or 2 players (machine can also play itself) this is when player = 0
 3. Determine X or O
 4. Draw the Board/Label coords
 5. Loop 9 or break
