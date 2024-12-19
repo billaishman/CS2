@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Dimensions</title>
+</head>
+<body>
+    <form id="boxForm">
+        <label for="Length">Length</label>
+        <input type="number" id="length" name="height" step="0.01"><br><br>
+        
+        <label for="Height">Height:</label>
+        <input type="number" id="height" name="length" step="0.01"><br><br>
+        
+        <label for="thickness">Thickness:</label>
+        <input type="number" id="thickness" name="thickness" step="0.01"><br><br>
+        
+        <label for="zip_zone_from">Zip From:</label>
+        <input type="number" id="zipFrom" name="zipFrom" step="1"><br><br>
+        
+        <label for="zip_zone_to">Zip To:</label>
+        <input type="number" id="zipTo" name="zipTo" step="1"><br><br>
+        
+        <button type="button" onclick="main()">Submit</button>
+    </form>
+
+    <script>
+        /**
+        * Bill Aishman
+        * This program determines the postage cost for entered mail. Postage class is determined by the size of a piece of
+        * mail. The cost to mail the piece is determined by its class and the number of postal zones the
+        * piece must travel through. The length of a piece of mail is always the side parallel to the written
+        * address. 
+        * REGULAR POST CARD: The length must be between 3.5 and 4.25 inches, inclusive. The
+        * height must be between 3.5 and 6 inches, inclusive. The thickness must be between .007
+        * and .016 inches, inclusive
+        * LARGE POST CARD: The length must be between 4.25 and 6 inches. The height must be
+        * between 6 and 11.5 inches. The thickness must be between .007 and .015 inches, inclusive
+        * ENVELOPE: The length must be between 3.5 and 6.125 inches, inclusive. The height must be
+        * between 5 and 11.5 inches, inclusive. The thickness must be between .016 and .25 inches.
+        * LARGE ENVELOPE: The length must be between 6.125 inches and 24 inches. The height must
+        * be between 11 and 18 inches, inclusive. The thickness must be between .25 and .5 inches,
+        * inclusive.
+        * PACKAGE: Use package class when the item exceeds any of the rules for large envelope and
+        * when the length plus the distance aroudn the other sides of a package equals 84 inches or less.
+        * LARGE PACKAGE: Use large package class when the length plus the distance around the other
+        * sides of a package is more than 84 inches but is not more than 130 inches.
+        * UNMAILABLE: Any item that does not conform to any of the above requirements.
+        * 
+        *     Takes in user input data and assigns it to various variables
+        *   Args: 
+        *        height : the height of the package
+        *        length : the length of the package
+        *        thickness : the thickness of the package
+        *        zipzonefrom : the begining zipcode
+        *        zipzoneto : the ending zipcode
+        *
+        *    Returns:
+        *        prints : the mailtype based on the dimensions
+        *        prints : the starting zipcode
+        *        prints : ending zipcode
+        *        prints : cost to send
+        * 
+        * 
+        * 
+        * Main function to read in the data from the form
+        */
+        var zip_distance;
+        function main() {
+            // Read in the data from the form
+            const length = parseFloat(document.getElementById('length').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const thickness = parseFloat(document.getElementById('thickness').value);
+            const zip_zone_from = parseInt(document.getElementById('zipFrom').value);
+            const zip_zone_to = parseInt(document.getElementById('zipTo').value);
+
+            // Call the other functions (currently not implemented)
+            zone_1 = getZip(zip_zone_from);
+            zone_2 = getZip2(zip_zone_to);
+            zip_distance=(Math.abs(zone_1-zone_2));
+            mailtype = getDistance(length, height, thickness);
+            var newtotal=getcost(mailtype, zone_1, zone_2);
+            alert("Total Cost $" + newtotal);
+             
+        }
+
+        /**
+         * Function to get zip information
+         * @param {number} zip - The zip code
+         **/
+
+        function getZip(zip_zone_from) {
+            if (zip_zone_from >= 1 & zip_zone_from <= 6999)
+                return 1;
+            else if (zip_zone_from >= 7000 & zip_zone_from <= 19999)
+                return 2;
+            else if (zip_zone_from >= 20000 & zip_zone_from <= 35999)
+                return 3;
+            else if (zip_zone_from >= 36000 & zip_zone_from <= 62999)
+                return 4;
+            else if (zip_zone_from >= 63000 & zip_zone_from <= 84999)
+                return 5;
+            else if (zip_zone_from >= 85000 & zip_zone_from <= 99999)
+                return 6;
+        }
+        function getZip2(zip_zone_to) {
+            if (zip_zone_to >= 1 & zip_zone_to <= 6999)
+                return 1;
+            else if (zip_zone_to >= 7000 & zip_zone_to <= 19999)
+                return 2;
+            else if (zip_zone_to >= 20000 & zip_zone_to <= 35999)
+                return 3;
+            else if (zip_zone_to >= 36000 & zip_zone_to <= 62999)
+                return 4;
+            else if (zip_zone_to >= 63000 & zip_zone_to <= 84999)
+                return 5;
+            else if (zip_zone_to >= 85000 & zip_zone_to <= 99999)
+                return 6;
+
+        }
+
+        /**
+         * Function to calculate distance based on dimensions
+         * @param {number} length - The length of the box
+         * @param {number} height - The height of the box
+         * @param {number} thickness - The thickness of the box
+         **/
+
+        function getDistance(length, height, thickness) {
+            if (length >= 3.25 & length <= 4.25 & height >= 3.5 & height <= 6.0 & thickness >= .007 & thickness <= .016)
+                return "postcard";
+            else if (length > 4.25 & length < 6 & height > 6.0 & height < 11.5 & thickness >= .007 & thickness <= .016)
+                return "large_postcard";             
+            else if (length >= 3.5 & length <= 6.125 & height >= 5.0 & height <= 11.5 & thickness > .016 & thickness < .25)
+                return "envelope";
+            else if (length > 6.125 & length < 24.0 & height >= 11.0 & height <= 18.0 & thickness >= .25 & thickness <= .5)
+                return "large_envelope";
+            else if (length > 24.0 & height > 18.0 & thickness > .5 & length + height *2 + thickness*2 < 84.0)
+                return "package";
+            else if (length + height *2 + thickness*2 > 84.0 & length + height *2 + thickness*2 < 130.0)
+                return "large_package";
+            else if (length + height *2 + thickness*2 > 130.0)
+                return "unmailable";
+            else if (length < 3.5 & height < 3.5 & thickness < 0.007)
+                return "unmailable";
+            else return "unmailable"
+        }
+
+        function getcost(mailtype, zone_1, zone_2) {
+            if (mailtype == "postcard")
+            {   
+                total = (.20 + (.03* zip_distance));
+                return (total);
+
+            }
+            else if (mailtype == "large_postcard")
+            {
+                total = (.37 + (.03* zip_distance));
+                return (total);
+            }
+            else if (mailtype == "envelope")
+            {
+                total = (.37 + (.04* zip_distance));
+                return (total);
+            }
+            else if (mailtype == "large_envelope")
+            {
+                total = (.60 + (.05* zip_distance));
+                return (total);
+            }
+            else if (mailtype == "package")
+            {
+                total = (2.95 + (.25* zip_distance));
+                return (total);
+            }
+            else if (mailtype == "large_package") 
+            {
+                total = (3.95 + (.35* zip_distance));
+                return (total);
+            }
+            else if (mailtype == "unmailable")
+                return ("Unmailable");
+        }
+        
+    </script>
+</body>
+</html>
