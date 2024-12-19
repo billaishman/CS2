@@ -3,7 +3,9 @@
 # Log: Finished project (1.0)                                                   #
 # Description: This is a hangman game. It selects a random word from dictionary.#
 # The user then guesses letters. If the user guesses all of the letters, the    #
-# user wins! The user can get six letters wrong and then the game is over.      # 
+# user wins! The user can get six letters wrong and then the game is over.      #
+# Bugs:                                                                         #
+# Features:                                                                     #
 #-------------------------------------------------------------------------------#
 
 #This imports the random library for the computer player.
