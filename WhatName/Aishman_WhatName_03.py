@@ -153,7 +153,23 @@ def consonant(x):
 #   6. Return middle name(s)
 #   7. Return boolean if last name contains a hyphen
 #   8. Function to convert to lowercase
+def lower(x):
+  lower_case = ""
+  for char in x:
+      if 'A' <= char <= 'Z':
+          lower_case += chr(ord(char) + 32)
+      else:
+          lower_case += char
+  print("8. Your name in lowercase is: " + lower_case)
 #   9. Function to convert to uppercase
+def upper(x):
+  upper_case = ""
+  for char in x:
+      if 'a' <= char <= 'z':
+          upper_case += chr(ord(char) - 32)
+      else:
+          upper_case += char
+  print("9. Your name in uppercase is: " + upper_case)
 #   10. Modify array to create a random name (mix up letters)
 #   11. Return boolean if first name is a palindrome
 #   12. Return full-name as a sorted array of characters (Bonus)
