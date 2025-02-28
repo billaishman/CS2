@@ -1,27 +1,14 @@
-#-------------------------------------------------------------------------------#
-# Name: Bill Aishman                                                            
-# Log: Finished project (1.0)                                                   
-# Description: This is a string class of functions. Esch funtion manipulates a string
-# List of Functions:
-#   1. Reverse and display
-#   2. Determine the number of vowels. You can prompt user for a particular vowel or create subtotals of each.
-#   3. Consonant frequency. Bonus: Subtotals of each consonant
-#   4. Return first name.
-#   5. Return last name.
-#   6. Return middle name(s)
-#   7. Return boolean if last name contains a hyphen
-#   8. Function to convert to lowercase
-#   9. Function to convert to uppercase
-#   10. Modify array to create a random name (mix up letters)
-#   11. Return boolean if first name is a palindrome
-#   12. Return full-name as a sorted array of characters (Bonus)
-#   13. Build a menu (Bonus)
-#   14. Make initials from name
-#   15. Return boolean if name contains a title/distinction (“Dr.”, “Sir”, “Esq”, “Ph.d”)
-#   (Bonus) 17. COME UP WITH YOUR OWN! (Bonus)
-#   18. Secret Bonus ---See me
-# 
-#-------------------------------------------------------------------------------#
+'''
+┌───────────────────────────────────────────────────────────────────────────┐
+│                           What's in a Function?                           │
+├───────────────────────────────────────────────────────────────────────────┤
+│ Name: Bill Aishman                                                        │
+│ Log: Finished project (1.0)                                               |
+| Bugs: N/K                                                                 │
+│ Description: User will input a name and can choose from the list of       |
+| options to decide what to do with the name (i.e. manipulate, split, etc)  |                             
+└───────────────────────────────────────────────────────────────────────────┘
+'''
 
 #This imports the random library for the random name function
 import random
