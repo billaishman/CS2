@@ -11,7 +11,10 @@
 '''
 #Imports the random library for the computer player
 import random
-
+#imports the audio for the game
+import pygame
+pygame.mixer.init()  # Initialize the mixer module.
+sound1 = pygame.mixer.Sound(r"Bomb_sound.wav")  # Load a sound.
 
 #This is initializes the array that the player will see
 box = [
@@ -98,6 +101,7 @@ def game():
             if box2[row-1][col-1] == "🚢":
                 box[row-1][col-1] = "🔥"
                 box2[row-1][col-1] = "🔥"
+                sound1.play()
                 print("You Hit One!")
                 hits += 1
                 if hits == 4:
