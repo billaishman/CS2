@@ -5,8 +5,8 @@
 │ Name: Bill Aishman                                                        │
 │ Log: Finished project (1.0)                                               |
 | Bugs: N/K                                                                 │
-│ Description: This code makes a playable battleship game either aginst     |
-| a player or a computer                                                    |                             
+│ Description: This code makes a playable battleship game against a computer|
+|                                                                           |                             
 └───────────────────────────────────────────────────────────────────────────┘
 '''
 #Imports the random library for the computer player
