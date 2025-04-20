@@ -64,59 +64,62 @@ def print_grid():
     print( "5  | " + str(box[4][0]) + "  | " + str(box[4][1]) + "  | " + str(box[4][2])+ "  | " + str(box[4][3]) + "  | " + str(box[4][4])+ " | ")
     print("----------------------------")
 
+#This randomly places the ships in the array that holds the ships
 def place_ship():
-    count = 0
+    count = 0 #This sets the ship count to zero
     #This is how many ships are placed
     while count < 4:
-        row = random.randint(1,5)
-        col = random.randint(1,5)
-        if box2[row-1][col-1] == "🚢":
-            row = random.randint(1,5)
-            col = random.randint(1,5)
+        row = random.randint(1,5) #This chooses a random number between 1 and 5 for the row number
+        col = random.randint(1,5) #This chooses a random number between 1 and 5 for the column number
+        if box2[row-1][col-1] == "🚢": #If the random row and column already has a ship, it chooses another random spot
+            row = random.randint(1,5)#This chooses a random number between 1 and 5 for the row number
+            col = random.randint(1,5)#This chooses a random number between 1 and 5 for the column number
         else:
-            box2[row-1][col-1] = "🚢"
-        count += 1
+            box2[row-1][col-1] = "🚢" #If the random row and column is empty, it puts a ship there
+        count += 1 #This adds one to the ship count
 
 #Player enters move
 def player_input():
-    while True:
+    while True: #This runs the loop and makes sure the user enters numbers correctly
         try:
-            row, col = map(int, input("Enter your move (row, col): ").split(","))
-            if 1 <= row <= 5 and 1 <= col <= 5:
-                return row, col
+            row, col = map(int, input("Enter your move (row, col): ").split(","))#This asks the user the row and column and then assigns each variable
+            if 1 <= row <= 5 and 1 <= col <= 5:#This makes sure the user number is between 1 and 5
+                return row, col #This returns the row and column
             else:
-                print("Please enter a row and column between 1 and 3.")
+                print("Please enter a row and column between 1 and 3.") #This prompts the user to enter properly
         except ValueError:
-            print("Please enter two numbers separated by a comma.")
+            print("Please enter two numbers separated by a comma.") #This prompts the user to enter properly
 
+#This is the main body of the game
 def game():
-        place_ship()
-        count = 10
-        hits = 0
-        while count != 0:
-            print_grid()
-            print("You have " + str(count) + " moves left.")
-            row, col = player_input()
-            count = count - 1
-            if box2[row-1][col-1] == "🚢":
-                box[row-1][col-1] = "🔥"
-                box2[row-1][col-1] = "🔥"
-                sound1.play()
-                print("You Hit One!")
-                hits += 1
-                if hits == 4:
-                    print_grid2()
-                    print("You Win!")
-                    exit()
-            else:
-                box[row-1][col-1] = "M"
-                box2[row-1][col-1] = "M"
-                print("You Missed!")
-        print_grid2()
-        print("Here they were!")
-        print("Game Over!")
+        place_ship() #This runs place ship to place the ships
+        count = 10 #This is the number of moves the player gets
+        hits = 0 #This sets the number of hits to zero
+        while count != 0: #This runs the loop while the player still has moves
+            print_grid() #This prints what the use sees
+            print("You have " + str(count) + " moves left.") #This tells the user how many moves they have
+            row, col = player_input() #This takes the row and column the user enters.
+            count = count - 1 #This removes one of the user's moves.
+            if box2[row-1][col-1] == "🚢": #If the user has picked a spot with a ship
+                box[row-1][col-1] = "🔥" #It makes a fire on what the user sees.
+                box2[row-1][col-1] = "🔥" #It makes a fire on the bos the user does not see.
+                sound1.play() #This plays the sound of the bomb.
+                print("You Hit One!") #This tells the user they got a hit.
+                hits += 1 #This increases the hits by 1
+                if hits == 4: #This checks to see if the user has hit 4 ships
+                    print_grid2() #This prints the grid where the ship were
+                    print("You Win!") #This tells the user they won
+                    exit() #This ends the game
+            else: #If the spot does not have a ship in it
+                box[row-1][col-1] = "M" #It makes a M on what the user sees.
+                box2[row-1][col-1] = "M" #It makes a M on what the user does not see.
+                print("You Missed!") #This tells the user they missed.
+        print_grid2() #This prints the game board and shows the user where the ships were.
+        print("Here they were!") #This tells the user where they were.
+        print("Game Over!") #This tells the user the game is over.
 
-def main():
-    game()
+#This runs the main
+def main(): 
+    game() #This runs game
 
-main()
+main() #This runs main
